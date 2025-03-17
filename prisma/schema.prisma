@@ -1,0 +1,31 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Calculation {
+  id            Int      @id @default(autoincrement())
+  operation     String
+  input         String
+  result        String
+  createdAt     DateTime @default(now())
+}
+
+model Fibonacci {
+  id            Int      @id @default(autoincrement())
+  count         Int
+  sequence      String
+  createdAt     DateTime @default(now())
+}
+
+model Factorial {
+  id            Int      @id @default(autoincrement())
+  number        Int
+  result        String   // Using String to handle large numbers
+  createdAt     DateTime @default(now())
+}
